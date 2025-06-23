@@ -68,7 +68,7 @@ if address:
             temp, humidity, rainfall = get_weather_data(lat, lon)
             ph = get_soil_ph(lat, lon)
 
-        if None in [temp, humidity, rainfall, ph]:
+        if None in [temp, humidity, ph, rainfall]:
             st.error("❌ Unable to retrieve all required data. Try a different address.")
         else:
             st.subheader("📊 Retrieved Environmental Data:")
@@ -78,7 +78,7 @@ if address:
             st.write(f"🧪 Soil pH: {ph}")
 
             # === Prepare Input for Model ===
-            input_features = np.array([[temp, rainfall, humidity, ph]])
+            input_features = np.array([[temp, humidity, ph, rainfall]]) 
             prediction = model.predict(input_features)[0]
             st.success(f"✅ Recommended Crop: **{prediction}**")
     else:
