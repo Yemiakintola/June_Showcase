@@ -5,7 +5,7 @@ import pickle
 import numpy as np
 
 # === CONFIG ===
-OPENWEATHER_API_KEY = "YOUR_OPENWEATHER_API_KEY"  # Replace with your key
+OPENWEATHER_API_KEY = "56023c1ff6bc1c084c05e0016367bfd0"  # Replace with your key
 
 # === FUNCTION: Get Coordinates ===
 def get_coordinates(address):
