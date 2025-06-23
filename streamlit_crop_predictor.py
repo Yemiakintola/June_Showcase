@@ -41,9 +41,9 @@ def get_soil_ph(lat, lon):
             return round(ph_value / 10, 1)
         else:
             return None
-    except:
+    except Exception as e:
         return None
-
+        
 # === Load Trained Model ===
 @st.cache_resource
 def load_model():
