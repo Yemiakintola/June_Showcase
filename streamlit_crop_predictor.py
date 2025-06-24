@@ -36,7 +36,7 @@ def get_weather_data(lat, lon):
         humidity = data.get("main", {}).get("humidity")
         # OpenWeatherMap's rain data can be nested under 'rain' and then a time period like '1h' or '3h'
         # Use .get with a default of {} to handle cases where 'rain' key might be missing
-        rainfall = data.get("rain", {}).get("1h", 0) # Default to 0 if no rain data is available
+        rainfall = data.get("rain", {}).get("144h", 0) # Default to 0 if no rain data is available
         return {
             "Temperature (°C)": temp,
             "Humidity (%)": humidity,
