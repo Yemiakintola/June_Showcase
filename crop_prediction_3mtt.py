@@ -20,7 +20,7 @@ warnings.filterwarnings('ignore')
 df = pd.read_csv("/content/Crop_recommendation.csv")
 
 # Define the columns to drop as a single list
-drop_columns = ["N", "P", "K"]
+drop_columns = ["N", "P", "K", "ph"]
 df = df.drop(columns=drop_columns, axis=1)
 
 df.head()
@@ -43,7 +43,7 @@ sns.heatmap(numerical_df.corr(), annot=True, cmap='coolwarm') # Added cmap for b
 plt.title('Correlation Heatmap of Numerical Features') # Added a title
 plt.show() # Display the plot
 
-features = df[['temperature', 'humidity', 'ph', 'rainfall']]
+features = df[['temperature', 'humidity', 'rainfall']]
 target = df['label']
 labels = df['label']
 
