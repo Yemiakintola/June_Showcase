@@ -113,8 +113,6 @@ if address:
             # Get current weather data
             weather_data = get_weather_data(lat, lon)
 
-            # Get soil pH data
-            soil_ph = get_soil_ph(lat, lon)
 
             # Get historical data (optional, depending on model requirements)
             # temperature_historical, rainfall_historical = get_historical_data(lat, lon, start_date_historical, end_date_historical)
@@ -125,9 +123,8 @@ if address:
 
 
             # Display fetched data
-            if weather_data and soil_ph is not None: # Ensure both weather and pH data were successfully retrieved
+            if weather_data is not None: # Ensure both weather and pH data were successfully retrieved
                 st.subheader("📊 Fetched Data")
-                st.write(f"Soil pH: {soil_ph}")
                 st.write("Current Weather:")
                 for key, value in weather_data.items():
                     st.write(f"- {key}: {value}")
@@ -138,9 +135,9 @@ if address:
                 humidity_now = weather_data.get("Humidity (%)")
                 rainfall_now = weather_data.get("Rainfall (mm)") # Use current rainfall for the feature
 
-                if temp_now is not None and humidity_now is not None and soil_ph is not None and rainfall_now is not None:
-                    # Arrange features in the required order: temp, humidity, ph, rainfall
-                    features = np.array([[temp_now, humidity_now, soil_ph, rainfall_now]])
+                if temp_now is not None and humidity_now is not None and rainfall_now is not None:
+                    # Arrange features in the required order: temp, humidity, rainfall
+                    features = np.array([[temp_now, humidity_now, rainfall_now]])
 
                     st.subheader("🤖 Prediction")
                     # === Make Prediction ===
@@ -155,7 +152,7 @@ if address:
                 else:
                     st.warning("Missing data required for prediction. Please check location.")
 
-            elif weather_data or soil_ph is not None:
+            elif weather_data is not None:
                  st.warning("Incomplete data fetched. Cannot make prediction.")
 
 
